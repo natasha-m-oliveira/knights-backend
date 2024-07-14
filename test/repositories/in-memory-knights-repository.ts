@@ -25,11 +25,15 @@ export class InMemoryKnightsRepository extends KnightsRepository {
     return knight;
   }
 
+  async save(knight: Knight): Promise<void> {
+    const index = this.knights.findIndex(({ id }) => id === knight.id);
+
+    this.knights.splice(index, 1, knight);
+  }
+
   async deleteById(id: string): Promise<void> {
     const index = this.knights.findIndex((knight) => knight.id === id);
 
     this.knights.splice(index, 1);
-
-    console.log(this.knights);
   }
 }
