@@ -3,6 +3,7 @@ import { Attribute, Weapon } from './weapon';
 export type Attributes = Record<Attribute, number>;
 
 type KnightProps = {
+  id?: string;
   name: string;
   nickname: string;
   birthday: Date;
@@ -16,6 +17,7 @@ export class Knight {
 
   constructor(props: KnightProps) {
     this.props = {
+      id: props.id ?? '',
       name: props.name,
       nickname: props.nickname,
       birthday: props.birthday,
@@ -23,6 +25,14 @@ export class Knight {
       attributes: props.attributes,
       keyAttribute: props.keyAttribute,
     };
+  }
+
+  public get id() {
+    return this.props.id;
+  }
+
+  public set id(id: string) {
+    this.props.id = id;
   }
 
   public get name() {
