@@ -13,16 +13,24 @@ export class InMemoryKnightsRepository extends KnightsRepository {
     this.knights.push(knight);
   }
 
-  async findByNickname(nickname: string): Promise<Knight> {
+  async findByNickname(nickname: string): Promise<Knight | null> {
     const knight = this.knights.find((knight) => knight.nickname === nickname);
+
+    if (!knight) return null;
 
     return knight;
   }
 
-  async findById(id: string): Promise<Knight> {
+  async findById(id: string): Promise<Knight | null> {
     const knight = this.knights.find((knight) => knight.id === id);
 
+    if (!knight) return null;
+
     return knight;
+  }
+
+  async list(filter: { onlyHeroes?: boolean }): Promise<Knight[]> {
+    return this.knights;
   }
 
   async save(knight: Knight): Promise<void> {
