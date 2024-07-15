@@ -1,7 +1,7 @@
-import { InMemoryKnightsRepository } from '../../../../test/repositories/in-memory-knights-repository';
-import { Weapon } from '../../entities/weapon';
+import { InMemoryKnightsRepository } from '@test/repositories/in-memory-knights-repository';
 import { CreateKnight } from './create-knight';
 import { KnightAlreadyExists } from './errors/knight-already-exists';
+import { Attribute, Weapon } from '@app/entities/weapon';
 
 describe('Create Knight', () => {
   let knightsRepository: InMemoryKnightsRepository;
@@ -21,7 +21,7 @@ describe('Create Knight', () => {
         new Weapon({
           name: 'sword',
           mod: 3,
-          attr: 'strength',
+          attr: Attribute.strength,
           equipped: true,
         }),
       ],
@@ -33,7 +33,7 @@ describe('Create Knight', () => {
         wisdom: 0,
         charisma: 0,
       },
-      keyAttribute: 'strength',
+      keyAttribute: Attribute.strength,
     });
 
     expect(knight).toEqual(knightsRepository.knights[0]);
@@ -48,7 +48,7 @@ describe('Create Knight', () => {
         new Weapon({
           name: 'sword',
           mod: 3,
-          attr: 'strength',
+          attr: Attribute.strength,
           equipped: true,
         }),
       ],
@@ -60,7 +60,7 @@ describe('Create Knight', () => {
         wisdom: 0,
         charisma: 0,
       },
-      keyAttribute: 'strength',
+      keyAttribute: Attribute.strength,
     });
 
     await expect(
@@ -72,7 +72,7 @@ describe('Create Knight', () => {
           new Weapon({
             name: 'sword',
             mod: 3,
-            attr: 'strength',
+            attr: Attribute.strength,
             equipped: true,
           }),
         ],
@@ -84,7 +84,7 @@ describe('Create Knight', () => {
           wisdom: 0,
           charisma: 0,
         },
-        keyAttribute: 'strength',
+        keyAttribute: Attribute.strength,
       }),
     ).rejects.toThrow(KnightAlreadyExists);
   });

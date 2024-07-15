@@ -1,10 +1,11 @@
-export type Attribute =
-  | 'strength'
-  | 'dexterity'
-  | 'constitution'
-  | 'intelligence'
-  | 'wisdom'
-  | 'charisma';
+export enum Attribute {
+  strength = 'strength',
+  dexterity = 'dexterity',
+  constitution = 'constitution',
+  intelligence = 'intelligence',
+  wisdom = 'wisdom',
+  charisma = 'charisma',
+}
 
 type WeaponProps = {
   name: string;

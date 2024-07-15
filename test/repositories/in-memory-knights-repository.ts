@@ -1,5 +1,5 @@
-import { Knight } from '../../src/app/entities/knight';
-import { KnightsRepository } from '../../src/app/repositories/knights-repository';
+import { Knight } from '@app/entities/knight';
+import { KnightsRepository } from '@app/repositories/knights-repository';
 import { randomUUID } from 'node:crypto';
 
 export class InMemoryKnightsRepository extends KnightsRepository {

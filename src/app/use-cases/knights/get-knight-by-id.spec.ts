@@ -1,5 +1,6 @@
-import { InMemoryKnightsRepository } from '../../../../test/repositories/in-memory-knights-repository';
-import { Knight } from '../../entities/knight';
+import { InMemoryKnightsRepository } from '@test/repositories/in-memory-knights-repository';
+import { Knight } from '@app/entities/knight';
+import { Attribute } from '@app/entities/weapon';
 import { KnightNotFound } from './errors/knight-not-found';
 import { GetKnightById } from './get-knight-by-id';
 
@@ -28,7 +29,7 @@ describe('Get Knight By Id', () => {
           wisdom: 0,
           charisma: 0,
         },
-        keyAttribute: 'strength',
+        keyAttribute: Attribute.strength,
       }),
     );
 

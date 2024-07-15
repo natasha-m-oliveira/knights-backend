@@ -1,6 +1,6 @@
-import { InMemoryKnightsRepository } from '../../../../test/repositories/in-memory-knights-repository';
-import { Knight } from '../../entities/knight';
-import { Attribute } from '../../entities/weapon';
+import { InMemoryKnightsRepository } from '@test/repositories/in-memory-knights-repository';
+import { Knight } from '@app/entities/knight';
+import { Attribute } from '@app/entities/weapon';
 import { ListKnights } from './list-knights';
 
 describe('List Knights', () => {

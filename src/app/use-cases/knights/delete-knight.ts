@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { KnightsRepository } from '../../repositories/knights-repository';
+import { KnightsRepository } from '@app/repositories/knights-repository';
 import { KnightNotFound } from './errors/knight-not-found';
 
 type DeleteKnightRequest = {

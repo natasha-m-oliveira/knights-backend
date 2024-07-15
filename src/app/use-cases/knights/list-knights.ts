@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { KnightsRepository } from '../../repositories/knights-repository';
-import { Knight } from '../../entities/knight';
+import { KnightsRepository } from '@app/repositories/knights-repository';
+import { Knight } from '@app/entities/knight';
 
 type ListKnightsRequest = {
   onlyHeroes?: boolean;

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Attributes, Knight } from '../../entities/knight';
-import { Attribute, Weapon } from '../../entities/weapon';
-import { KnightsRepository } from '../../repositories/knights-repository';
+import { Attributes, Knight } from '@app/entities/knight';
+import { Attribute, Weapon } from '@app/entities/weapon';
+import { KnightsRepository } from '@app/repositories/knights-repository';
 import { KnightAlreadyExists } from './errors/knight-already-exists';
 
 type CreateKnightRequest = {
