@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Attribute {
+  strength
+  dexterity
+  constitution
+  intelligence
+  wisdom
+  charisma
+}
+
+type Weapon {
+  name     String
+  mod      Int
+  attr     Attribute
+  equipped Boolean
+}
+
+type Attributes {
+  strength     Int
+  dexterity    Int
+  constitution Int
+  intelligence Int
+  wisdom       Int
+  charisma     Int
+}
+
+model Knight {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  nickname     String     @unique
+  birthday     DateTime
+  weapons      Weapon[]
+  attributes   Attributes
+  keyAttribute Attribute
+
+  @@map("knights")
+}
