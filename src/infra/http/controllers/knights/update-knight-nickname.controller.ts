@@ -13,7 +13,7 @@ import { UpdateKnightNicknameBody } from '@infra/http/dtos/update-knight-nicknam
 export class UpdateKnightNicknameController {
   constructor(private updateKnightNickname: UpdateKnightNickname) {}
 
-  @Patch(':id')
+  @Patch(':id/nickname')
   @UseInterceptors(HttpMapperInterceptor)
   async handle(
     @Param('id') id: string,

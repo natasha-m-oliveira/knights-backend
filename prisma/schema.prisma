@@ -49,3 +49,17 @@ model Knight {
 
   @@map("knights")
 }
+
+model Legacy {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  knightId     String
+  name         String
+  nickname     String     @unique
+  birthday     DateTime
+  weapons      Weapon[]
+  attributes   Attributes
+  keyAttribute Attribute
+  deletedAt    DateTime   @default(now())
+
+  @@map("legacies")
+}

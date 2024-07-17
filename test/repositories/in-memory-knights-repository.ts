@@ -30,7 +30,16 @@ export class InMemoryKnightsRepository extends KnightsRepository {
   }
 
   async list(filter: { onlyHeroes?: boolean }): Promise<Knight[]> {
-    return this.knights;
+    if (!filter.onlyHeroes) return this.knights;
+
+    const now = new Date();
+    const minAge18Birthday = new Date(
+      now.getFullYear() - 18,
+      now.getMonth(),
+      now.getDate(),
+    );
+
+    return this.knights.filter((knight) => knight.birthday >= minAge18Birthday);
   }
 
   async save(knight: Knight): Promise<void> {

@@ -11,9 +11,11 @@ export class PrismaKnightsRepository extends KnightsRepository {
   }
 
   async create(knight: Knight): Promise<void> {
-    await this.prisma.knight.create({
+    const createdKnight = await this.prisma.knight.create({
       data: PrismaKnightMapper.toPrisma(knight),
     });
+
+    Object.assign(knight, { id: createdKnight.id });
   }
 
   async findByNickname(nickname: string): Promise<Knight | null> {
@@ -41,7 +43,22 @@ export class PrismaKnightsRepository extends KnightsRepository {
   }
 
   async list(filter: { onlyHeroes?: boolean }): Promise<Knight[]> {
-    const knights = await this.prisma.knight.findMany();
+    const now = new Date();
+    const minAge18Birthday = new Date(
+      now.getFullYear() - 18,
+      now.getMonth(),
+      now.getDate(),
+    );
+
+    const knights = await this.prisma.knight.findMany({
+      where: filter.onlyHeroes
+        ? {
+            birthday: {
+              gte: minAge18Birthday,
+            },
+          }
+        : undefined,
+    });
 
     return knights?.map(PrismaKnightMapper.toDomain);
   }

@@ -12,7 +12,7 @@ export class ListKnightsController {
     const filters = typeof filter === 'string' ? [filter] : filter;
 
     const { knights } = await this.listKnights.execute({
-      onlyHeroes: filters.includes('heroes'),
+      onlyHeroes: filters?.includes('heroes'),
     });
 
     return knights;

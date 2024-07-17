@@ -1,4 +1,5 @@
 import { InMemoryKnightsRepository } from '@test/repositories/in-memory-knights-repository';
+import { InMemoryLegaciesRepository } from '@test/repositories/in-memory-legacies-repository';
 import { Knight } from '@app/entities/knight';
 import { Attribute } from '@app/entities/weapon';
 import { DeleteKnight } from './delete-knight';
@@ -6,12 +7,14 @@ import { KnightNotFound } from './errors/knight-not-found';
 
 describe('Delete Knight', () => {
   let knightsRepository: InMemoryKnightsRepository;
+  let legaciesRepository: InMemoryLegaciesRepository;
   let deleteKnight: DeleteKnight;
 
   beforeEach(() => {
     knightsRepository = new InMemoryKnightsRepository();
+    legaciesRepository = new InMemoryLegaciesRepository();
 
-    deleteKnight = new DeleteKnight(knightsRepository);
+    deleteKnight = new DeleteKnight(knightsRepository, legaciesRepository);
   });
 
   it('should be able to delete a knight', async () => {

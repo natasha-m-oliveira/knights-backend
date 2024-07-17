@@ -9,6 +9,8 @@ import {
   IsObject,
   IsOptional,
   IsString,
+  Max,
+  Min,
   ValidateNested,
 } from 'class-validator';
 import { Attribute } from '@app/entities/weapon';
@@ -20,6 +22,8 @@ class Weapon {
 
   @IsNotEmpty()
   @IsNumber()
+  @Min(0)
+  @Max(20)
   mod: number;
 
   @IsNotEmpty()
@@ -34,26 +38,38 @@ class Weapon {
 class Attributes {
   @IsOptional()
   @IsNumber()
+  @Min(0)
+  @Max(20)
   strength: number = 0;
 
   @IsOptional()
   @IsNumber()
+  @Min(0)
+  @Max(20)
   dexterity: number = 0;
 
   @IsOptional()
   @IsNumber()
+  @Min(0)
+  @Max(20)
   constitution: number = 0;
 
   @IsOptional()
   @IsNumber()
+  @Min(0)
+  @Max(20)
   intelligence: number = 0;
 
   @IsOptional()
   @IsNumber()
+  @Min(0)
+  @Max(20)
   wisdom: number = 0;
 
   @IsOptional()
   @IsNumber()
+  @Min(0)
+  @Max(20)
   charisma: number = 0;
 }
 
