@@ -39,7 +39,7 @@ export class InMemoryKnightsRepository extends KnightsRepository {
       now.getDate(),
     );
 
-    return this.knights.filter((knight) => knight.birthday >= minAge18Birthday);
+    return this.knights.filter((knight) => knight.birthday <= minAge18Birthday);
   }
 
   async save(knight: Knight): Promise<void> {

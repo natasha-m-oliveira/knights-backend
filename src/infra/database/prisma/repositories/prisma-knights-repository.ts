@@ -54,7 +54,7 @@ export class PrismaKnightsRepository extends KnightsRepository {
       where: filter.onlyHeroes
         ? {
             birthday: {
-              gte: minAge18Birthday,
+              lte: minAge18Birthday,
             },
           }
         : undefined,
